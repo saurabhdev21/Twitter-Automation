@@ -5,7 +5,8 @@ from django.template import loader
 
 from django.http import HttpResponse
 
-from .services.twitter import get_tweet_text
+from .services.twitter import generate_tweet_image
+
 
 
 def main(request):
@@ -13,10 +14,14 @@ def main(request):
     return HttpResponse(template.render(request=request))
 
 
+
 def submit_page(request):
     if request.method == 'POST':
         tweet_link = request.POST.get('tweet-link')
-        tweet_text = get_tweet_text(tweet_link)
-        return render(request, 'submit_page.html', {'tweet_link': tweet_text})
+        image = generate_tweet_image(tweet_link)
+        print(image.info)
+        print(image)
+        image_data = image.tobytes()
+        return render(request, 'submit_page.html', {'image_data': image_data})
     else:
         return render(request, 'main.html')

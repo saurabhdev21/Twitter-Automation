@@ -65,7 +65,7 @@
 <form action="{% url 'submit_page' %}" method="POST">
     {% csrf_token %}
     <label for="tweet-link">Enter a link for a tweet:</label>
-    <input type="url" id="tweet-link" name="tweet-link" placeholder="https://twitter.com/username/status/tweet-id">
+    <input type="text" id="tweet-link" name="tweet-link" placeholder="https://twitter.com/username/status/tweet-id">
     <button type="submit">Submit</button>
 </form>
 {% if tweet_link %}

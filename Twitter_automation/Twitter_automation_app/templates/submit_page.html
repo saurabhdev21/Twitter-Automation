@@ -8,6 +8,7 @@
 </head>
 <body>
 <h1>Here is the link you submitted:</h1>
-<p>{{ tweet_link }}</p>
+{% load static %}
+<img src="data:image/png;base64,{{ image_data|base64 }}" alt="Generated tweet image">
 </body>
 </html>
