@@ -9,6 +9,6 @@
 <body>
 <h1>Here is the link you submitted:</h1>
 {% load static %}
-<img src="data:image/png;base64,{{ image_data|base64 }}" alt="Generated tweet image">
+<img src="{% static image_name %}" alt="My image">
 </body>
 </html>

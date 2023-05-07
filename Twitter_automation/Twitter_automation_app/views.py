@@ -18,10 +18,7 @@ def main(request):
 def submit_page(request):
     if request.method == 'POST':
         tweet_link = request.POST.get('tweet-link')
-        image = generate_tweet_image(tweet_link)
-        print(image.info)
-        print(image)
-        image_data = image.tobytes()
-        return render(request, 'submit_page.html', {'image_data': image_data})
+        image, image_name = generate_tweet_image(tweet_link)
+        return render(request, 'submit_page.html', {'image_name': image_name})
     else:
         return render(request, 'main.html')

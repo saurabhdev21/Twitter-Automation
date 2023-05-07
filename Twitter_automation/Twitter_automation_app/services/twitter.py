@@ -27,11 +27,11 @@ def generate_tweet_image(tweet_text):
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     image_name = "tweet_image_" + generate_random_string(2) + ".png"
 
-    font_path = os.path.join(base_dir, "generate_image", image_name)
+    font_path = os.path.join(base_dir, "static", image_name)
 
     image.save(font_path)
     # Return the image object
-    return image
+    return image, image_name
 
 import random
 import string
