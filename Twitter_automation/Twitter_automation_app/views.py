@@ -5,6 +5,8 @@ from django.template import loader
 
 from django.http import HttpResponse
 
+from .services.twitter import get_tweet_text
+
 
 def main(request):
     template = loader.get_template('main.html')
@@ -14,6 +16,7 @@ def main(request):
 def submit_page(request):
     if request.method == 'POST':
         tweet_link = request.POST.get('tweet-link')
-        return render(request, 'submit_page.html', {'tweet_link': tweet_link})
+        tweet_text = get_tweet_text(tweet_link)
+        return render(request, 'submit_page.html', {'tweet_link': tweet_text})
     else:
         return render(request, 'main.html')
