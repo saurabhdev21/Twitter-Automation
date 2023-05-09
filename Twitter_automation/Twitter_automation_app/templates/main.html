@@ -1,77 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Twitter Link Input</title>
+    <title>Color and Text Style Selector</title>
     <style>
-		body {
-			background-color: #f5f8fa;
-			font-family: Arial, sans-serif;
-		}
-
-		form {
-			max-width: 500px;
-			margin: 0 auto;
-			padding: 20px;
-			background-color: #fff;
-			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-		}
-
-		label {
-			display: block;
-			margin-bottom: 10px;
-			font-weight: bold;
-			color: #1da1f2;
-		}
-
-		input[type="url"] {
-			display: block;
-			width: 100%;
-			padding: 10px;
-			font-size: 16px;
-			border: 1px solid #1da1f2;
-			border-radius: 5px;
-			box-sizing: border-box;
-		}
-
-		button[type="submit"] {
-			display: block;
-			margin-top: 10px;
-			padding: 10px 20px;
-			background-color: #1da1f2;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			font-size: 16px;
-			cursor: pointer;
-		}
-
-		button[type="submit"]:hover {
-			background-color: #0e71c8;
-		}
-
-        .message {
-			max-width: 500px;
-			margin: 20px auto;
-			padding: 20px;
-			background-color: #fff;
-			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-			font-size: 16px;
-			line-height: 1.5;
-			text-align: center;
-		}
-	</style>
+      /* CSS for the color and text style selector */
+      label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+      }
+      select {
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+      }
+      input[type="text"] {
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+      }
+    </style>
 </head>
 <body>
 <form action="{% url 'submit_page' %}" method="POST">
     {% csrf_token %}
-    <label for="tweet-link">Enter a link for a tweet:</label>
-    <input type="text" id="tweet-link" name="tweet-link" placeholder="https://twitter.com/username/status/tweet-id">
-    <button type="submit">Submit</button>
+    <label for="color">Choose a color:</label>
+    <select name="color" id="color">
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+    </select>
+    <label for="font-style">Choose a font style:</label>
+    <select name="font-style" id="font-style">
+        <option value="normal">Normal</option>
+        <option value="italic">Italic</option>
+        <option value="oblique">Oblique</option>
+    </select>
+
+    <label for="font-color">Choose a font color:</label>
+    <select name="font-color" id="font-color">
+        <option value="BLACK">BLACK</option>
+        <option value="GREEN">GREEN</option>
+        <option value="WHITE">WHITE</option>
+        <option value="RED">RED</option>
+        <option value="GREEN">GREEN</option>
+        <option value="BLUE">BLUE</option>
+        <option value="YELLOW">YELLOW</option>
+        <option value="CYAN">CYAN</option>
+        <option value="MAGENTA">MAGENTA</option>
+    </select>
+    <label for="text">Enter some text:</label>
+    <input type="text" name="text" id="text" />
+    <input type="submit" value="Submit" />
 </form>
-{% if tweet_link %}
-<div class="message">
-    You submitted: {{ tweet_link }}
-</div>
-{% endif %}
 </body>
 </html>
